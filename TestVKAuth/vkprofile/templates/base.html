@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>VK Auth</title>{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="nav" id="nav">
+       {% block sidebar %}
+        <ul class="main-nav">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'index' %}">Задание</a></li>
+                <li><a href="{% url 'profile_detail' %}">Профиль</a></li>
+                <li><a id="out" href="{% url 'account_logout'%}">Выйти</a></li>
+            {% endif %}
+        </ul>
+        {% endblock %}
+    </div>
+    <div class="main_content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="dev_link">
+        <p>Разарботал: Руслан Шишмарев</p>
+        <ul class="links">
+            <li><a href="https://www.linkedin.com/in/ruslan-shishmarev/" target="_blank">Linkedin</a></li>
+            <li><a href="https://github.com/RuslanShishmarev" target="_blank">GitHub</a></li>
+            <li><a href="https://vk.com/heckfy96" target="_blank">VK</a></li>
+            <li><a href="https://www.youtube.com/channel/UCpd9dFwXuDYKJTs_iEGQvPg" target="_blank">YouTube</a></li>
+        </ul>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

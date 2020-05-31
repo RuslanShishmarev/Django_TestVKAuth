@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="inf">
+    <div class="me">
+        <h2>Информация о пользователе</h2>
+        <div class="my_img">
+            {% if avatar == "no" %}
+                {% load static %}
+                <img src="{% static 'images/default_avatar.png' %}" alt="">
+            {% else %}
+                <img src="{{avatar}}" alt="">
+            {% endif %}
+        </div>
+        <p>{{name}} {{last_name}}</p>
+    </div>
+    <div class="my_friends">
+        <h2>{{f_count}} друзей</h2>
+        <div class="friends">
+            {% if friend_list == "no" %}
+                <div class="friend">
+                    <h1>К сожалению, у вас пока нет друзей :.(</h1>
+                </div>
+            {% else %}
+                {% for friend in friend_list %}
+                <div class="friend">
+                    {% if friend.photo_200_orig == None %}
+                        {% load static %}
+                        <img src="{% static 'images/default_avatar.png' %}" alt="">
+                    {% else %}
+                        <img src="{{friend.photo_200_orig}}" alt="фото друга">
+                    {% endif %}
+                    <p>{{friend.first_name}} {{friend.last_name}}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

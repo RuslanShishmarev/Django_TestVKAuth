@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Произошла ошибка!</h2>
+<p>Пожалуйста, перейдите на главную страницу и авторизируйтесь...</p>
+<div class="auth_btn">
+    <a href="{% url 'index' %}">В начало</a>
+</div>
+{% endblock %}
